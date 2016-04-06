@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">CheckerBot</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="Player_name">
+        <item>Choose a Player</item>
+    </string-array>
 </resources>
