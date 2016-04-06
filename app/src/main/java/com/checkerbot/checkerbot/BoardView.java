@@ -16,7 +16,7 @@ public class BoardView extends View {
         super(context);
         int x = 50;
         int y = 50;
-        int sideLength = 200;
+        int sideLength = 100;
 
         // create a rectangle that we'll draw later
         rectangle = new Rect(x, y, sideLength, sideLength);
