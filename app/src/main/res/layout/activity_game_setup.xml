@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/player1"
         android:layout_below="@+id/textView"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -47,13 +47,14 @@
         android:text="Play"
         android:id="@+id/button"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/player2" />
+        android:layout_centerHorizontal="true"  />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="VS"
+        android:layout_centerVertical="true"
         android:id="@+id/textView3"
         android:layout_above="@+id/textView2"
         android:layout_centerHorizontal="true" />
