@@ -13,17 +13,6 @@ public class Board extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_board);
-        this.drawBoard();
-        Paint p = new Paint();
-    }
-
-    private void drawBoard() {
-        ImageView i = (ImageView) this.findViewById(R.id.board);
-        Bitmap b = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(b);
-        Paint paint = new Paint();
-        c.drawRect(100f,100f,100f,100f,paint);
-        i.setImageDrawable(new BitmapDrawable(getResources(),b));
+        setContentView(new BoardView(this));
     }
 }
