@@ -9,27 +9,50 @@ package com.checkerbot.checkerbot;
 
 public class BoardView extends View {
 
-    private Rect rectangle;
+    private Square[][] board;
     private Paint paint;
+    private int width;
+    private int height;
 
     public BoardView(Context context) {
         super(context);
-        int x = 50;
-        int y = 50;
-        int sideLength = 100;
-
-        // create a rectangle that we'll draw later
-        rectangle = new Rect(x, y, sideLength, sideLength);
-
-        // create the Paint and set its color
+        this.createBoard();
         paint = new Paint();
-        paint.setColor(Color.GRAY);
+    }
+
+    private void createBoard() {
+        board= new Square[8][8];
+        //set colors of square
+        int start = Color.BLACK;
+        for(int r=0;r<board.length;r++){
+            if(start==Color.BLACK){
+                start=Color.WHITE;
+            }
+            if(start==Color.WHITE){
+                start=Color.BLACK;
+            }
+            for(int c=0;c<board[r].length;c++){
+                //board[r][c]
+            }
+        }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawColor(Color.BLUE);
-        canvas.drawRect(rectangle, paint);
+        this.drawBG(canvas);
+        this.drawBoard(canvas);
     }
 
+    private void drawBoard(Canvas canvas) {
+    }
+
+    private void drawBG(Canvas canvas) {
+        paint.setColor(Color.WHITE);
+        canvas.drawRect(new Rect(0,0,width,height),paint);
+    }
+
+    public void setDim(int width, int height) {
+        this.width=width;
+        this.height=height;
+    }
 }
