@@ -45,4 +45,8 @@ public class Board {
     public void updateSquare(Point p, int color) {
         board[p.y][p.x].setColor(color);
     }
+
+    public Square[] getValidMove(Point p, boolean isKing){
+        return null;
+    }
 }

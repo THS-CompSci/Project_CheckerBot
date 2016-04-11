@@ -7,7 +7,11 @@ import android.graphics.Rect;
 
 public class Square {
 
-    private int x=0, y=0, piece=0, color=0;
+    private int x=0;
+    private int y=0;
+    private int piece=0;
+    private int color=0;
+    private int state=0;
 
     public Square(){
     }
@@ -66,6 +70,14 @@ public class Square {
 
     public void setColor(int color) {
         this.color = color;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     public String toString(){
