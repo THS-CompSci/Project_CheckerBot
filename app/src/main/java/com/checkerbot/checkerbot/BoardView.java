@@ -4,25 +4,28 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Point;
-import android.util.Log;
+import android.util.AttributeSet;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class BoardView extends View {
 
-    private Square[][] board = new Square[8][8];
+    public Square[][] board;
+
     private int windowWidth;
+
     private int windowHeight;
+
     private boolean first = true;
 
-    public BoardView(Context context) {
+    private Point pressPoint;
+
+    public BoardView(Context context, Board board) {
         super(context);
+        this.board= board.getBoard();
+
         //Get Screen Size
         Point point = new Point();
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -30,67 +33,67 @@ public class BoardView extends View {
         display.getSize(point);
 
         // Get screen max x and y.
+        if (point.x > point.y) {
+            windowWidth = point.y;
+            windowHeight = point.x;
+        } else {
+            windowWidth = point.x;
+            windowHeight = point.y;
+        }
         windowWidth = point.x;
         windowHeight = point.y;
+
     }
 
     protected void onDraw(Canvas canvas) {
-        if (first) {
-            first = false;
-            initBoard(canvas);
+        this.drawBoard(canvas);
+    }
+
+    private void drawBoard(Canvas canvas) {
+        for (Square[] row : board) {
+            for (Square s : row) {
+                s.draw(canvas, windowWidth / 8);
+            }
         }
     }
 
+    public void update() {
+        invalidate();
+    }
 
-    private void initBoard(Canvas canvas) {
-        for (Square[] row : board) {
-            Arrays.fill(row, new Square());
-        }
+    public int getWindowWidth(){
+        return this.windowWidth;
+    }
 
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                Square current = board[i][j];
-                current.setX(j);
-                current.setY(i);
-                current.setSide(windowWidth / 8);
-                if ((i + j) % 2 != 0) {
-                    current.setColor(Color.rgb(127, 174, 255));
-                    if (i < 3) {
-                        current.setPiece(1);
-                    }
-                    if (i > 4) {
-                        current.setPiece(2);
-                    }
-
-                } else {
-                    current.setColor(Color.rgb(3, 45, 119));
-                }
-                current.draw(canvas);
-            }
-
-        }
-
+    public int getWindowHeight(){
+        return this.windowHeight;
     }
 
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                int side = windowWidth/8;
-                int x = (int)event.getX();
-                int y = (int)event.getY();
-                if(y>windowWidth){
-                    break;
-                }
-                x=x/side;
-                y=y/side;
-                System.out.println("X: "+x+" Y: "+y);
 
-                return true;
+        Point p = this.getViewPoint(event);
+        if(p.x>-1){
         }
+        pressPoint = p;
         return super.onTouchEvent(event);
     }
 
-    public String save() {
-        return null;
+    private Point getViewPoint(MotionEvent event) {
+
+        Point point;
+        int side = windowWidth / 8;
+        int x = (int) event.getX();
+        int y = (int) event.getY();
+        if (y > windowWidth) {
+            point = new Point(-1, -1);
+        } else {
+            point = new Point(x / side, y / side);
+        }
+        return point;
     }
+
+    public Point getPoint(){
+        return pressPoint;
+    }
+
 }

@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name">CheckerBot</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Choose A Player</string>
 
     <string-array name="Player_name">
-        <item>Choose a Player</item>
+        <item>Human</item>
+        <item>Damen Hannah AI</item>
+        <item>AI Two</item>
+        <item>AI Three</item>
+        <item>AI Four</item>
+        <item>AI Five</item>
+        <item>AI Six</item>
     </string-array>
+    <string name="title_activity_main_menu">Main Menu</string>
 </resources>

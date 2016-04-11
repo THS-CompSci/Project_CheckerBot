@@ -4,24 +4,19 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.util.Log;
 
 public class Square {
 
-    private int x=0,
-            y=0,
-            piece=0,
-            color=0,
-            side=0;
+    private int x=0, y=0, piece=0, color=0;
 
     public Square(){
     }
 
-    public void draw(Canvas canvas) {
+    public void draw(Canvas canvas,int width) {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(this.color);
-        Rect r = new Rect(x*side,y*side,side+x*side,side+y*side);
+        Rect r = new Rect(x*width,y*width,width+x*width,width+y*width);
         canvas.drawRect(r,paint);
         switch(piece){
             case 0:
@@ -29,13 +24,13 @@ public class Square {
             case 1:
                 paint.setColor(Color.WHITE);
                 if ((x + y) % 2 != 0) {
-                    canvas.drawCircle(r.centerX(), r.centerY(), side / 3, paint);
+                    canvas.drawCircle(r.centerX(), r.centerY(), width / 3, paint);
                 }
                 break;
             case 2:
                 paint.setColor(Color.BLACK);
                 if ((x + y) % 2 != 0) {
-                    canvas.drawCircle(r.centerX(), r.centerY(), side / 3, paint);
+                    canvas.drawCircle(r.centerX(), r.centerY(), width / 3, paint);
                 }
                 break;
         }
@@ -71,14 +66,6 @@ public class Square {
 
     public void setColor(int color) {
         this.color = color;
-    }
-
-    public int getSide() {
-        return side;
-    }
-
-    public void setSide(int side) {
-        this.side = side;
     }
 
     public String toString(){

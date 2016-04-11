@@ -24,22 +24,24 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Black"
         android:id="@+id/textView2"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/player1"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_marginTop="105dp" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/player1"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:layout_toStartOf="@+id/button"
+        android:layout_alignEnd="@+id/editText3" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/player2"
         android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignEnd="@+id/button" />
 
     <Button
         android:layout_width="wrap_content"
@@ -47,16 +49,27 @@
         android:text="Play"
         android:id="@+id/button"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"  />
+        android:layout_centerHorizontal="true"
+        android:onClick="StartGame" />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="VS"
-        android:layout_centerVertical="true"
-        android:id="@+id/textView3"
-        android:layout_above="@+id/textView2"
-        android:layout_centerHorizontal="true" />
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editText3"
+        android:layout_below="@+id/player1"
+        android:layout_alignStart="@+id/textView2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_below="@+id/player2"
+        android:layout_alignStart="@+id/textView2" />
 
 </RelativeLayout>
