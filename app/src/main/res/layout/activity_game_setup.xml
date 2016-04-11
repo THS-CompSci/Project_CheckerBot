@@ -33,15 +33,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/player1"
         android:layout_below="@+id/textView"
-        android:layout_toStartOf="@+id/button"
-        android:layout_alignEnd="@+id/editText3" />
+        android:layout_toStartOf="@+id/button" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/player2"
         android:layout_below="@+id/textView2"
-        android:layout_alignEnd="@+id/button" />
+        android:layout_alignEnd="@+id/player1" />
 
     <Button
         android:layout_width="wrap_content"
@@ -51,25 +50,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="StartGame" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/editText3"
-        android:layout_below="@+id/player1"
-        android:layout_alignStart="@+id/textView2" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_below="@+id/player2"
-        android:layout_alignStart="@+id/textView2" />
 
 </RelativeLayout>

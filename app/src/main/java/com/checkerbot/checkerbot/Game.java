@@ -15,6 +15,8 @@ public class Game extends AppCompatActivity {
     Board board;
     BoardView boardView;
     int windowWidth, windowHeight;
+    String player1;
+    String player2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,10 @@ public class Game extends AppCompatActivity {
         boardView = new BoardView(this, board);
         setContentView(boardView);
         windowWidth = boardView.getWindowWidth();
+        player1 = getIntent().getStringExtra("Player1");
+        player2 = getIntent().getStringExtra("Player2");
+        Log.e("P1", player1);
+        Log.e("P2", player2);
 
     }
 
