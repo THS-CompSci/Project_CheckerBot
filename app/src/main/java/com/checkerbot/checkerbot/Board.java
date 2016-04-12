@@ -46,7 +46,10 @@ public class Board {
         board[p.y][p.x].setColor(color);
     }
 
-    public Square[] getValidMove(Point p, boolean isKing){
+    public Square[] getValidMoves(Square play){
         return null;
+    }
+    public Square get(Point p){
+        return board[p.y][p.x];
     }
 }

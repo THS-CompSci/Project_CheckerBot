@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import java.util.Arrays;
+
 public class Game extends AppCompatActivity {
 
     Board board;
@@ -29,114 +31,46 @@ public class Game extends AppCompatActivity {
         String player2 = getIntent().getStringExtra("Player2");
         p1 = new Player(player1);
         p2 = new Player(player2);
-        this.game(getIntent().getStringExtra("Player1"), getIntent().getStringExtra("Player2"));
-
-    }
-    //http://stackoverflow.com/questions/17869353/turn-based-game-design-event-driven-vs-game-loop
-    //https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
-    private void game(String player1, String player2) {
-
-        /*
-        Human turn
-            ##################
-            #      Model     #
-            ##################
-                Get location of Tap
-                Is there a jump possible?
-                    Yes
-                        Did the player press a square with a possible jump?
-                            Yes
-                                Update View with Start and possible jumps
-                            No
-                                Notify Player "Must take possible jump"
-                    No
-                        Is the tap valid(On player's square)?
-                            Yes
-                                Is the tap new, or a continuation of the turn(Get the state of square tapped)?
-                                    New
-                                        Get Locations of valid moves
-                                        Send View array of Squares(Where the player tapped, then valid moves).
-                                    Continuing
-                                        Is there an additional jump possible?
-                                            Yes
-                                                Send View array of Squares(Where the player tapped, then valid moves).
-                                            No
-                                                Next Turn.
-
-                            No
-                                Notify Player "Not a valid square".
-
-            ##################
-            #      View      #
-            ##################
-                Update board where specified with new colors.
-                    [Where tapped, valid squares]
-                Update View
-
-
-            ##################
-            #   Controller   #
-            ##################
-                When the screen is tapped go to Model
-
-            AI Turn
-            ##################
-            #      Model     #
-            ##################
-                Get Location of Play
-                Is there a jump possible?
-                    Yes
-                        Did the AI play a square with a possible jump?
-                            Yes
-                                Update View with Start and possible jumps
-                                Send AI array of possible moves
-                            Continuation
-                                Did AI select a possible jump
-                                    Yes
-                                        Is there an additional jump possible?
-                                                Yes
-                                                    Send View array of Squares(Where the player tapped, then valid moves).
-                                                No
-                                                    Next Turn.
-                                    No
-                                        Notify AI
-                            No
-                                Notify AI "Must take possible jump"
-                    No
-                        Is the play valid(On AI's square)?
-                            Yes
-                                Is the play new, or a continuation of the turn(Get the state of square played)?
-                                    New
-                                        Get Locations of valid moves
-                                        Send View array of Squares(Where the AI played, then valid moves).
-                                        Send AI array of possible moves
-                                    Continuing
-                                        Is there an additional jump possible?
-                                            Yes
-                                                Send View array of Squares(Where the player tapped, then valid moves).
-                                                Send AI array of possible moves
-                                            No
-                                                Next Turn.
-
-                            No
-                                Notify AI "Not a valid square".
-
-            ##################
-            #      View      #
-            ##################
-                Update board where specified with new colors.
-                    [Where played, valid squares]
-                Update View
-
-
-            ##################
-            #   Controller   #
-            ##################
-                When the AI Play Event is Fired go to Model
-
-         */
+        p1.setPiece(1);
+        p2.setPiece(2);
+        p1.setTurn(true);
 
     }
 
+    public void logic(Point p){
+        Player t = this.getTurn();
+        Square s = board.get(p);
+        if(t.isActive()){
+            if(Arrays.asList(t.getValidMoves()).contains(s)){
+                s.setColor(Color.rgb(127, 174, 255));
+                s.setPiece(t.getPiece());
+                t.getPlay().setPiece(0);
+            }
+        }else{
+            if(this.validMove(t,s)){
+
+            }
+        }
+
+
+    }
+
+    public boolean onTouchEvent(MotionEvent event){
+        logic(boardView.getPoint());
+
+        return super.onTouchEvent(event);
+    }
+
+    public Player getTurn(){
+        if(p1.isTurn()){
+            return p1;
+        }else{
+            return p2;
+        }
+    }
+
+    public boolean validMove(Player p, Square s){
+        return true;
+    }
 
 }

@@ -83,5 +83,12 @@ public class Square {
     public String toString(){
         return "X: "+x+" Y: "+y;
     }
+
+    public boolean isKing(){
+        if(state==3){
+            return true;
+        }
+        return false;
+    }
 }
 
