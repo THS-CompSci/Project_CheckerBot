@@ -7,8 +7,8 @@ import android.graphics.Rect;
 
 public class Square {
 
-    private int x=0;
-    private int y=0;
+    private int x=-1;
+    private int y=-1;
     private int piece=0;
     private int color=0;
     private int state=0;

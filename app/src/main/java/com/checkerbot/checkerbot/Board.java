@@ -2,6 +2,9 @@ package com.checkerbot.checkerbot;
 
 import android.graphics.Color;
 import android.graphics.Point;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class Board {
 
@@ -42,14 +45,46 @@ public class Board {
         return board;
     }
 
-    public void updateSquare(Point p, int color) {
-        board[p.y][p.x].setColor(color);
+    public ArrayList<Square> getValidMoves(Square play, Player p) throws InvalidMoveException{
+        ArrayList<Square> valid = new ArrayList<Square>();
+        //Test to see if in correct square
+        if ((play.getX() + play.getY()) % 2 == 0) {
+            throw new InvalidMoveException();
+        }
+        //test to see if player's piece
+        if(play.getPiece()==p.getPiece()){
+            int forward;
+            if(play.getPiece()==1){
+                forward = -1;
+            }else{
+                forward = 1;
+            }
+            if(play.isKing()){
+                if(board[play.getY()-forward][play.getX()-1].getPiece()==0){
+                    valid.add(board[play.getY()-forward][play.getX()-1]);
+                }
+                if(board[play.getY()-forward][play.getX()+1].getPiece()==0){
+                    valid.add(board[play.getY()-forward][play.getX()+1]);
+                }
+            }
+            if(board[play.getY()+forward][play.getX()-1].getPiece()==0){
+                valid.add(board[play.getY()+forward][play.getX()-1]);
+            }
+            if(board[play.getY()+forward][play.getX()+1].getPiece()==0){
+                valid.add(board[play.getY()+forward][play.getX()+1]);
+            }
+        }else{
+            throw new InvalidMoveException();
+        }
+
+        return valid;
     }
 
-    public Square[] getValidMoves(Square play){
-        return null;
-    }
     public Square get(Point p){
         return board[p.y][p.x];
+    }
+
+    public boolean isJump(Square s) {
+        return false;
     }
 }

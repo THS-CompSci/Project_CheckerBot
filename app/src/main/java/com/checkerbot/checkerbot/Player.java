@@ -1,28 +1,30 @@
 package com.checkerbot.checkerbot;
 
 
+import java.util.ArrayList;
+
 public class Player {
 
-    private boolean active;
+    private boolean active = false;
 
-    private Square play;
+    private Square play = new Square();
 
-    private int Piece;
+    private int Piece = -1;
+
+    private Player otherPlayer;
 
     private boolean turn = false;
 
-    private Square[][] validMoves;
+    private ArrayList<Square> validMoves = new ArrayList<>();
 
-    public Player(String player){
-
-
+    public Player(String player) {
     }
 
-    public Square[][] getValidMoves() {
+    public ArrayList<Square> getValidMoves() {
         return validMoves;
     }
 
-    public void setValidMoves(Square[][] validMoves) {
+    public void setValidMoves(ArrayList<Square> validMoves) {
         this.validMoves = validMoves;
     }
 
@@ -58,5 +60,12 @@ public class Player {
         this.turn = turn;
     }
 
+    public Player getOtherPlayer() {
+        return otherPlayer;
+    }
+
+    public void setOtherPlayer(Player otherPlayer) {
+        this.otherPlayer = otherPlayer;
+    }
 
 }

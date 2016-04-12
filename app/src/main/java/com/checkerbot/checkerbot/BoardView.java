@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,7 +21,7 @@ public class BoardView extends View {
 
     private boolean first = true;
 
-    private Point pressPoint;
+    private Point pressPoint = new Point(-1,-1);
 
     public BoardView(Context context, Board board) {
         super(context);
@@ -71,10 +72,7 @@ public class BoardView extends View {
 
     public boolean onTouchEvent(MotionEvent event) {
 
-        Point p = this.getViewPoint(event);
-        if(p.x>-1){
-        }
-        pressPoint = p;
+        pressPoint = this.getViewPoint(event);
         return super.onTouchEvent(event);
     }
 
