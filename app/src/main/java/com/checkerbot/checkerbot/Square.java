@@ -7,22 +7,22 @@ import android.graphics.Rect;
 
 public class Square {
 
-    private int x=-1;
-    private int y=-1;
-    private int piece=0;
-    private int color=0;
-    private int state=0;
+    private int x = -1;
+    private int y = -1;
+    private int piece = 0;
+    private int color = 0;
+    private int state = 0;
 
-    public Square(){
+    public Square() {
     }
 
-    public void draw(Canvas canvas,int width) {
+    public void draw(Canvas canvas, int width) {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(this.color);
-        Rect r = new Rect(x*width,y*width,width+x*width,width+y*width);
-        canvas.drawRect(r,paint);
-        switch(piece){
+        Rect r = new Rect(x * width, y * width, width + x * width, width + y * width);
+        canvas.drawRect(r, paint);
+        switch (piece) {
             case 0:
                 break;
             case 1:
@@ -49,6 +49,15 @@ public class Square {
                     canvas.drawCircle(r.centerX(), r.centerY(), width / 3, paint);
                 }
                 break;
+        }
+        if (this.isKing()) {
+            if (this.getPiece() == 1) {
+                paint.setColor(Color.BLACK);
+
+            } else {
+                paint.setColor(Color.WHITE);
+            }
+            canvas.drawText("K", 0, 1, width / 2 + x * width, width / 2 + y * width, paint);
         }
     }
 
@@ -92,13 +101,13 @@ public class Square {
         this.state = state;
     }
 
-    public String toString(){
-        return "X: "+x+" Y: "+y;
+    public String toString() {
+        return "X: " + x + " Y: " + y;
     }
 
-    public boolean isKing(){
+    public boolean isKing() {
         System.out.println("Here " + this.piece);
-        if(piece==3||piece==4){
+        if (state == 1) {
             return true;
         }
         return false;

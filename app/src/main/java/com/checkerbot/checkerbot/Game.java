@@ -55,6 +55,9 @@ public class Game extends AppCompatActivity {
                         if (Math.abs(s.getY() - t.getPlay().getY()) == 2) {
                             board.getBetween(s, t.getPlay()).setPiece(0);
                         }
+                        if ((s.getPiece() == 1 && s.getY() == 0) || s.getPiece() == 2 && s.getY() == 7) {
+                            s.setState(1);
+                        }
                         if (board.isJump(s)) {
 
                         } else {

@@ -21,11 +21,11 @@ public class BoardView extends View {
 
     private boolean first = true;
 
-    private Point pressPoint = new Point(-1,-1);
+    private Point pressPoint = new Point(-1, -1);
 
     public BoardView(Context context, Board board) {
         super(context);
-        this.board= board.getBoard();
+        this.board = board.getBoard();
 
         //Get Screen Size
         Point point = new Point();
@@ -62,11 +62,11 @@ public class BoardView extends View {
         invalidate();
     }
 
-    public int getWindowWidth(){
+    public int getWindowWidth() {
         return this.windowWidth;
     }
 
-    public int getWindowHeight(){
+    public int getWindowHeight() {
         return this.windowHeight;
     }
 
@@ -90,7 +90,7 @@ public class BoardView extends View {
         return point;
     }
 
-    public Point getPoint(){
+    public Point getPoint() {
         return pressPoint;
     }
 
