@@ -52,7 +52,10 @@ public class Game extends AppCompatActivity {
                         s.setPiece(t.getPiece());
                         t.getPlay().setPiece(0);
                         t.getPlay().setColor(Color.rgb(127, 174, 255));
-                        if (board.isJump(s) && board.isJump(t.getPlay())) {
+                        if (Math.abs(s.getY() - t.getPlay().getY()) == 2) {
+                            board.getBetween(s, t.getPlay()).setPiece(0);
+                        }
+                        if (board.isJump(s)) {
 
                         } else {
                             t.setActive(false);

@@ -37,7 +37,7 @@ public class Board {
         }
     }
 
-    public Square updateSquare(Point p ){
+    public Square updateSquare(Point p) {
         return board[p.y][p.x];
     }
 
@@ -45,46 +45,107 @@ public class Board {
         return board;
     }
 
-    public ArrayList<Square> getValidMoves(Square play, Player p) throws InvalidMoveException{
+    public ArrayList<Square> getValidMoves(Square play, Player p) throws InvalidMoveException {
         ArrayList<Square> valid = new ArrayList<Square>();
         //Test to see if in correct square
         if ((play.getX() + play.getY()) % 2 == 0) {
             throw new InvalidMoveException();
         }
         //test to see if player's piece
-        if(play.getPiece()==p.getPiece()){
+        if (play.getPiece() == p.getPiece()) {
             int forward;
-            if(play.getPiece()==1){
+            if (play.getPiece() == 1) {
                 forward = -1;
-            }else{
+            } else {
                 forward = 1;
             }
-            if(play.isKing()){
-                if(board[play.getY()-forward][play.getX()-1].getPiece()==0){
-                    valid.add(board[play.getY()-forward][play.getX()-1]);
+            //if the player is a king
+            if (play.isKing()) {
+                try {
+                    if (board[play.getY() - forward][play.getX() - 1].getPiece() == 0) {
+                        valid.add(board[play.getY() - forward][play.getX() - 1]);
+                    }
+                } catch (ArrayIndexOutOfBoundsException e) {
+
                 }
-                if(board[play.getY()-forward][play.getX()+1].getPiece()==0){
-                    valid.add(board[play.getY()-forward][play.getX()+1]);
+
+                try {
+                    if (board[play.getY() - forward][play.getX() + 1].getPiece() == 0) {
+                        valid.add(board[play.getY() - forward][play.getX() + 1]);
+                    }
+                } catch (ArrayIndexOutOfBoundsException e) {
+
                 }
+                //jump logic
+
+                try {
+                    if (board[play.getY() - (2*forward)][play.getX() + 2].getPiece() == 0 && board[play.getY() - forward][play.getX() + 1].getPiece() == p.getOtherPlayer().getPiece()) {
+                        valid.add(board[play.getY() - (2*forward)][play.getX() + 2]);
+                    }
+                } catch (ArrayIndexOutOfBoundsException e) {
+
+                }
+                try {
+                    if (board[play.getY() - (2*forward)][play.getX() - 2].getPiece() == 0 && board[play.getY() - forward][play.getX() - 1].getPiece() == p.getOtherPlayer().getPiece()) {
+                        valid.add(board[play.getY() - (2*forward)][play.getX() - 2]);
+                    }
+                } catch (ArrayIndexOutOfBoundsException e) {
+
+                }
+
             }
-            if(board[play.getY()+forward][play.getX()-1].getPiece()==0){
-                valid.add(board[play.getY()+forward][play.getX()-1]);
+            try {
+                if (board[play.getY() + forward][play.getX() - 1].getPiece() == 0) {
+                    valid.add(board[play.getY() + forward][play.getX() - 1]);
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+
             }
-            if(board[play.getY()+forward][play.getX()+1].getPiece()==0){
-                valid.add(board[play.getY()+forward][play.getX()+1]);
+
+            try {
+                if (board[play.getY() + forward][play.getX() + 1].getPiece() == 0) {
+                    valid.add(board[play.getY() + forward][play.getX() + 1]);
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+
             }
-        }else{
+
+            //jump logic
+            try {
+                if (board[play.getY() + (2*forward)][play.getX() + 2].getPiece() == 0 && board[play.getY() + forward][play.getX() + 1].getPiece() == p.getOtherPlayer().getPiece()) {
+                    valid.add(board[play.getY() + (2*forward)][play.getX() + 2]);
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+
+            }
+            try {
+                if (board[play.getY() + (2*forward)][play.getX() - 2].getPiece() == 0 && board[play.getY() + forward][play.getX() - 1].getPiece() == p.getOtherPlayer().getPiece()) {
+                    valid.add(board[play.getY() + (2*forward)][play.getX() - 2]);
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+
+            }
+        } else {
             throw new InvalidMoveException();
         }
 
         return valid;
     }
 
-    public Square get(Point p){
+    public Square get(Point p) {
+        try {
+            return board[p.y][p.x];
+        } catch (ArrayIndexOutOfBoundsException e) {
+
+        }
         return board[p.y][p.x];
     }
 
     public boolean isJump(Square s) {
         return false;
+    }
+
+    public Square getBetween(Square s, Square f) {
+        return this.get(new Point((s.getX()+f.getX())/2,(s.getY()+f.getY())/2));
     }
 }

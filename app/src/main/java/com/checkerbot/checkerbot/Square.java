@@ -37,6 +37,18 @@ public class Square {
                     canvas.drawCircle(r.centerX(), r.centerY(), width / 3, paint);
                 }
                 break;
+            case 3:
+                paint.setColor(Color.WHITE);
+                if ((x + y) % 2 != 0) {
+                    canvas.drawCircle(r.centerX(), r.centerY(), width / 3, paint);
+                }
+                break;
+            case 4:
+                paint.setColor(Color.BLACK);
+                if ((x + y) % 2 != 0) {
+                    canvas.drawCircle(r.centerX(), r.centerY(), width / 3, paint);
+                }
+                break;
         }
     }
 
@@ -85,7 +97,8 @@ public class Square {
     }
 
     public boolean isKing(){
-        if(state==3){
+        System.out.println("Here " + this.piece);
+        if(piece==3||piece==4){
             return true;
         }
         return false;
