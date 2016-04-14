@@ -192,9 +192,8 @@ public class Board {
         try {
             return board[p.y][p.x];
         } catch (ArrayIndexOutOfBoundsException e) {
-
+            return null;
         }
-        return board[p.y][p.x];
     }
 
     public boolean isJump(Square s, Player p) {

@@ -42,9 +42,14 @@ public class Game extends AppCompatActivity {
 
     }
 
-    public void logic(Point p) {
+    public void logic(Point p) throws InvalidMoveException {
         Player t = this.getTurn();
-        Square s = board.get(p);
+        Square s;
+        try {
+            s = board.get(p);
+        }catch (NullPointerException e){
+            throw new InvalidMoveException();
+        }
         if ((p.x + p.y) % 2 != 0) {
             try {
                 if (t.isActive()) {
@@ -113,7 +118,11 @@ public class Game extends AppCompatActivity {
 
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == 0) {
-            logic(boardView.getPoint());
+            try {
+                logic(boardView.getPoint());
+            }catch (InvalidMoveException e){
+                Toast.makeText(this,"Invalid Move",Toast.LENGTH_SHORT).show();
+            }
         }
         return super.onTouchEvent(event);
 
