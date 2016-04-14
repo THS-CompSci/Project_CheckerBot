@@ -8,12 +8,22 @@ import android.graphics.Rect;
 public class Square {
 
     private int x = -1;
+
     private int y = -1;
-    private int piece = 0;
+
     private int color = 0;
-    private int state = 0;
+
+    private Piece piece;
 
     public Square() {
+    }
+
+    public Piece getPiece() {
+        return piece;
+    }
+
+    public void setPiece(Piece piece) {
+        this.piece = piece;
     }
 
     public void draw(Canvas canvas, int width) {
@@ -22,42 +32,20 @@ public class Square {
         paint.setColor(this.color);
         Rect r = new Rect(x * width, y * width, width + x * width, width + y * width);
         canvas.drawRect(r, paint);
-        switch (piece) {
-            case 0:
-                break;
-            case 1:
-                paint.setColor(Color.WHITE);
-                if ((x + y) % 2 != 0) {
-                    canvas.drawCircle(r.centerX(), r.centerY(), width / 3, paint);
-                }
-                break;
-            case 2:
-                paint.setColor(Color.BLACK);
-                if ((x + y) % 2 != 0) {
-                    canvas.drawCircle(r.centerX(), r.centerY(), width / 3, paint);
-                }
-                break;
-            case 3:
-                paint.setColor(Color.WHITE);
-                if ((x + y) % 2 != 0) {
-                    canvas.drawCircle(r.centerX(), r.centerY(), width / 3, paint);
-                }
-                break;
-            case 4:
-                paint.setColor(Color.BLACK);
-                if ((x + y) % 2 != 0) {
-                    canvas.drawCircle(r.centerX(), r.centerY(), width / 3, paint);
-                }
-                break;
+        if(piece!=null){
+            paint.setColor(piece.getColor());
+            canvas.drawCircle(r.centerX(), r.centerY(), width / 3, paint);
         }
         if (this.isKing()) {
-            if (this.getPiece() == 1) {
+            if (piece.getColor() == Color.WHITE) {
                 paint.setColor(Color.BLACK);
 
             } else {
                 paint.setColor(Color.WHITE);
             }
-            canvas.drawText("K", 0, 1, width / 2 + x * width, width / 2 + y * width, paint);
+            paint.setTextSize(width / 4);
+            canvas.drawText("K", 0, 1, (width / 2 + x * width) - paint.getTextSize() / 3, (width / 2 + y * width) + paint.getTextSize()/3, paint);
+
         }
     }
 
@@ -77,14 +65,6 @@ public class Square {
         this.y = y;
     }
 
-    public int getPiece() {
-        return piece;
-    }
-
-    public void setPiece(int piece) {
-        this.piece = piece;
-    }
-
     public int getColor() {
         return color;
     }
@@ -93,22 +73,15 @@ public class Square {
         this.color = color;
     }
 
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
-    }
-
     public String toString() {
         return "X: " + x + " Y: " + y;
     }
 
     public boolean isKing() {
-        System.out.println("Here " + this.piece);
-        if (state == 1) {
-            return true;
+        if(piece!=null) {
+            if (piece.getState() == 1) {
+                return true;
+            }
         }
         return false;
     }
