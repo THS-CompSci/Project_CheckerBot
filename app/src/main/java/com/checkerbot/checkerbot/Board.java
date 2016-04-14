@@ -26,10 +26,10 @@ public class Board {
                 if ((row + col) % 2 != 0) {
                     current.setColor(Color.rgb(127, 174, 255));
                     if (row < 3) {
-                        current.setPiece(new Piece(Color.BLACK, 1));
+                        current.setPiece(new Piece(Color.BLACK, 0));
                     }
                     if (row > 4) {
-                        current.setPiece(new Piece(Color.WHITE, 1));
+                        current.setPiece(new Piece(Color.WHITE, 0));
                     }
 
                 } else {
