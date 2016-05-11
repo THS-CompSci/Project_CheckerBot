@@ -5,7 +5,9 @@ import android.graphics.Color;
 
 import java.util.ArrayList;
 
-public class Player {
+public abstract class Player {
+
+    public abstract Square getTurn(Board board);
 
     public boolean multi = false;
 
