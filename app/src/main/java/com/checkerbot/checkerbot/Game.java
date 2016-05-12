@@ -34,22 +34,22 @@ public class Game extends AppCompatActivity {
         String player2 = getIntent().getStringExtra("Player2");
 
         switch(player1){
-            case 'Adam AI':
+            case "Adam AI":
                 p1= new AdamAI();
             break;
-            case 'Damen AI':
+            case "Damen AI":
                 p1= new DamenAI();
                 break;
-            case 'Yasser AI':
+            case "Yasser AI":
                 p1= new YasserAI();
                 break;
-            case 'Dennis AI':
+            case "Dennis AI":
                 p1= new  DennisAI();
                 break;
-            case 'Brian AI':
+            case "Brian AI":
                 p1= new BrianAI();
                 break;
-            case 'William AI':
+            case "William AI":
                 p1= new WilliamAI();
                 break;
         }
