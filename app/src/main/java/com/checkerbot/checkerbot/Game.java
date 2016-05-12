@@ -32,6 +32,7 @@ public class Game extends AppCompatActivity {
         setContentView(boardView);
         String player1 = getIntent().getStringExtra("Player1");
         String player2 = getIntent().getStringExtra("Player2");
+
         switch(player1){
             case 'Adam AI':
                 p1= new AdamAI();
