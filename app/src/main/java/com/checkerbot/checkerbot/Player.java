@@ -9,8 +9,6 @@ public abstract class Player {
 
     public abstract Square getTurn(Board board);
 
-    public abstract Square getTurn(Square[] squares);
-
     public boolean multi = false;
 
     private boolean active = false;
