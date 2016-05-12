@@ -27,9 +27,6 @@ public abstract class Player {
 
     private ArrayList<Square> validMoves = new ArrayList<>();
 
-    public Player(String player) {
-    }
-
     public boolean isLastJump() {
         return lastJump;
     }
