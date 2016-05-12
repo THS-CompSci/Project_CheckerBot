@@ -49,7 +49,7 @@ public class Game extends AppCompatActivity {
                 p1= new BrianAI();
                 break;
             case 'William AI':
-                p1= new AdamAI();
+                p1= new WilliamAI();
                 break;
         }
         p1.setColor(Color.WHITE);
