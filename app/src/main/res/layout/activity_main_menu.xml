@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,43 +7,76 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.checkerbot.checkerbot.MainMenu">
+    tools:context="com.checkerbot.checkerbot.MainMenu"
+    android:orientation="vertical">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Main Menu"
+        android:text="CheckerBOT"
         android:id="@+id/MainMenu"
-        android:layout_marginTop="27dp"
         android:layout_alignParentTop="true"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:layout_gravity="center|bottom"
+        android:layout_marginTop="10dp"
+        android:textSize="50dp" />
+        </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:id="@+id/NewGame"
         android:layout_below="@+id/MainMenu"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp"
         android:text="New Game"
-        android:onClick="NewGame" />
+        android:onClick="NewGame"
+        android:layout_gravity="center"
+        android:textSize="35dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Load Game"
         android:layout_below="@+id/NewGame"
         android:id="@+id/LoadGame"
-        android:layout_marginTop="65dp"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:textSize="35dp" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Settings"
         android:id="@+id/Settings"
-        android:layout_marginTop="65dp"
         android:layout_below="@+id/LoadGame"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:textSize="35dp" />
+        </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
