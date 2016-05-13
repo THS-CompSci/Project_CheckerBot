@@ -53,6 +53,7 @@ public class Game extends AppCompatActivity {
                 p1= new WilliamAI();
                 break;
         }
+
         switch(player2){
             case "Adam AI":
                 p2= new AdamAI();
@@ -73,6 +74,7 @@ public class Game extends AppCompatActivity {
                 p2= new WilliamAI();
                 break;
         }
+
         p1.setColor(Color.WHITE);
         p2.setColor(Color.BLACK);
         p1.setOtherPlayer(p2);
