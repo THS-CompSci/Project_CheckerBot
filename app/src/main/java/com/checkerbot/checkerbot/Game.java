@@ -53,6 +53,28 @@ public class Game extends AppCompatActivity {
                 p1= new WilliamAI();
                 break;
         }
+
+        switch(player2){
+            case "Adam AI":
+                p2= new AdamAI();
+                break;
+            case "Damen AI":
+                p2= new DamenAI();
+                break;
+            case "Yasser AI":
+                p2= new YasserAI();
+                break;
+            case "Dennis AI":
+                p2= new  DennisAI();
+                break;
+            case "Brian AI":
+                p2= new BrianAI();
+                break;
+            case "William AI":
+                p2= new WilliamAI();
+                break;
+        }
+
         p1.setColor(Color.WHITE);
         p2.setColor(Color.BLACK);
         p1.setOtherPlayer(p2);

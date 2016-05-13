@@ -1,7 +1,7 @@
 package com.checkerbot.checkerbot;
 
 /**
- * Created by Damen on 5/11/2016.
+ * Created by Yasser on 5/13/2016.
  */
 
 public class YasserAI extends Player {
