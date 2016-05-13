@@ -1,18 +1,15 @@
 package com.checkerbot.checkerbot;
 
 import android.graphics.Color;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.checkerbot.checkerbot.Players.AdamAI;
+import com.checkerbot.checkerbot.Players.BrianAI;
+import com.checkerbot.checkerbot.Players.DamenAI;
+import com.checkerbot.checkerbot.Players.DennisAI;
+import com.checkerbot.checkerbot.Players.WilliamAI;
+import com.checkerbot.checkerbot.Players.YasserAI;
 
 public class Game extends AppCompatActivity {
 
@@ -44,7 +41,7 @@ public class Game extends AppCompatActivity {
                 p1= new YasserAI();
                 break;
             case "Dennis AI":
-                p1= new  DennisAI();
+                p1= new DennisAI();
                 break;
             case "Brian AI":
                 p1= new BrianAI();
@@ -80,7 +77,12 @@ public class Game extends AppCompatActivity {
         p1.setOtherPlayer(p2);
         p2.setOtherPlayer(p1);
         p1.setTurn(true);
+        
+        this.referee();
 
+    }
+
+    private void referee() {
     }
 
 
