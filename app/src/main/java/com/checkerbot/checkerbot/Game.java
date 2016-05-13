@@ -4,6 +4,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.checkerbot.checkerbot.GameObjects.Board;
+import com.checkerbot.checkerbot.GameObjects.Player;
+import com.checkerbot.checkerbot.GameObjects.Square;
 import com.checkerbot.checkerbot.Players.AdamAI;
 import com.checkerbot.checkerbot.Players.BrianAI;
 import com.checkerbot.checkerbot.Players.DamenAI;

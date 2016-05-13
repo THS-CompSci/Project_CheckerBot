@@ -1,8 +1,9 @@
-package com.checkerbot.checkerbot;
+package com.checkerbot.checkerbot.GameObjects;
 
 import android.graphics.Color;
 import android.graphics.Point;
-import android.widget.Toast;
+
+import com.checkerbot.checkerbot.Exceptions.InvalidMoveException;
 
 import java.util.ArrayList;
 

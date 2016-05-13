@@ -1,8 +1,8 @@
 package com.checkerbot.checkerbot.Players;
 
-import com.checkerbot.checkerbot.Board;
-import com.checkerbot.checkerbot.Player;
-import com.checkerbot.checkerbot.Square;
+import com.checkerbot.checkerbot.GameObjects.Board;
+import com.checkerbot.checkerbot.GameObjects.Player;
+import com.checkerbot.checkerbot.GameObjects.Square;
 
 /**
  * Created by kyokyo on 5/12/2016.

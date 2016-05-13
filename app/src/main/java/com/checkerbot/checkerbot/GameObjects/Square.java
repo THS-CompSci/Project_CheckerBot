@@ -1,9 +1,11 @@
-package com.checkerbot.checkerbot;
+package com.checkerbot.checkerbot.GameObjects;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+
+import com.checkerbot.checkerbot.GameObjects.Piece;
 
 public class Square {
 

@@ -1,4 +1,4 @@
-package com.checkerbot.checkerbot;
+package com.checkerbot.checkerbot.Exceptions;
 
 /**
  * Created by Damen on 4/12/2016.
