@@ -50,7 +50,7 @@ public class Board {
         return valid;
     }
 
-    public ArrayList<Square> mainLogic(Square play, Player p) throws InvalidMoveException {
+    private ArrayList<Square> mainLogic(Square play, Player p) throws InvalidMoveException {
         ArrayList<Square> valid = new ArrayList<Square>();
         //Main Logic
         if ((play.getX() + play.getY()) % 2 == 0) {
@@ -79,7 +79,7 @@ public class Board {
         return valid;
     }
 
-    public ArrayList<Square> logic(Square play, Player p) {
+    private ArrayList<Square> logic(Square play, Player p) {
         ArrayList<Square> valid = new ArrayList<>();
 
         try {
@@ -101,7 +101,7 @@ public class Board {
         return valid;
     }
 
-    public ArrayList<Square> kingLogic(Square play, Player p) {
+    private ArrayList<Square> kingLogic(Square play, Player p) {
         ArrayList<Square> valid = new ArrayList<>();
         try {
             if (board[play.getY() - forward][play.getX() - 1].getPiece() == null) {
@@ -127,7 +127,7 @@ public class Board {
         return valid;
     }
 
-    public ArrayList<Square> jumpLogic(Square play, Player p) {
+    private ArrayList<Square> jumpLogic(Square play, Player p) {
         ArrayList<Square> valid = new ArrayList<Square>();
         try {
             if (board[play.getY() + (2 * forward)][play.getX() + 2].getPiece() == null) {
@@ -157,7 +157,7 @@ public class Board {
         return valid;
     }
 
-    public ArrayList<Square> kingJumpLogic(Square play, Player p) {
+    private ArrayList<Square> kingJumpLogic(Square play, Player p) {
         ArrayList<Square> valid = new ArrayList<Square>();
         System.out.println("here");
         try {
@@ -189,7 +189,7 @@ public class Board {
         return valid;
     }
 
-    public Square get(Point p) {
+    public Square getSquare(Point p) {
         try {
             return board[p.y][p.x];
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -209,7 +209,33 @@ public class Board {
         return false;
     }
 
+    public Square[] getPieceArray(Player p) {
+        Square[] squares;
+        int count = 0;
+        for (int r = 0; r <= 7; r++) {
+            for (int c = 0; c <= 7; c++) {
+                if (this.getSquare(new Point(r, c)).getPiece() != null) {
+                    if (this.getSquare(new Point(r, c)).getPiece().getColor() == p.getColor())
+                        count++;
+                }
+            }
+        }
+        squares = new Square[count];
+        int count2 = 0;
+        for (int r = 0; r <= 7; r++) {
+            for (int c = 0; c <= 7; c++) {
+                if (this.getSquare(new Point(r, c)).getPiece() != null) {
+                    if (this.getSquare(new Point(r, c)).getPiece().getColor() == p.getColor()) ;
+                    squares[count2] = this.getSquare(new Point(r, c));
+                    count2++;
+                }
+            }
+        }
+        squares = new Square[count];
+        return squares;
+    }
+
     public Square getBetween(Square s, Square f) {
-        return this.get(new Point((s.getX() + f.getX()) / 2, (s.getY() + f.getY()) / 2));
+        return this.getSquare(new Point((s.getX() + f.getX()) / 2, (s.getY() + f.getY()) / 2));
     }
 }
