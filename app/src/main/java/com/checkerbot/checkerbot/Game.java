@@ -93,7 +93,6 @@ public class Game extends AppCompatActivity {
         }
     }
 
-
     public void update() {
         boardView.update();
     }

@@ -35,7 +35,7 @@
         android:orientation="vertical"
         android:layout_weight="1">
     <Button
-        android:layout_width="250dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:id="@+id/NewGame"
         android:layout_below="@+id/MainMenu"
@@ -43,7 +43,7 @@
         android:text="New Game"
         android:onClick="NewGame"
         android:layout_gravity="center"
-        android:textSize="35dp" />
+        android:textSize="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -60,7 +60,7 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:textSize="35dp" />
+        android:textSize="20dp" />
         </LinearLayout>
 
     <LinearLayout
@@ -76,7 +76,7 @@
         android:layout_below="@+id/LoadGame"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:textSize="35dp" />
+        android:textSize="20dp" />
         </LinearLayout>
 
 </LinearLayout>

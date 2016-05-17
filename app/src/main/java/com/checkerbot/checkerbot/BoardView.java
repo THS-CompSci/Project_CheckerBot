@@ -43,7 +43,6 @@ public class BoardView extends View {
         }
         windowWidth = point.x;
         windowHeight = point.y;
-
     }
 
     protected void onDraw(Canvas canvas) {
