@@ -44,9 +44,13 @@ public class Board {
         return board;
     }
 
-    public ArrayList<Square> getValidMoves(Square play, Player p) throws InvalidMoveException {
+    public ArrayList<Square> getValidMoves(Square play, Player p) {
         ArrayList<Square> valid = new ArrayList<Square>();
-        valid.addAll(this.mainLogic(play, p));
+        try {
+            valid.addAll(this.mainLogic(play, p));
+        }catch(InvalidMoveException e){
+
+        }
         return valid;
     }
 
