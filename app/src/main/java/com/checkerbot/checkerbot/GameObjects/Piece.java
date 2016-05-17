@@ -3,6 +3,7 @@ package com.checkerbot.checkerbot.GameObjects;
 import android.graphics.Color;
 
 public class Piece {
+
     private int color = 0;
 
     private int state = 0;
