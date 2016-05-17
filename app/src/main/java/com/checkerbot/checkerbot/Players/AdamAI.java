@@ -9,13 +9,21 @@ import com.checkerbot.checkerbot.GameObjects.Square;
  */
 public class AdamAI extends Player {
 
+    //TODO: Eat food given to me by my master
 
     public Square getTurn(Board board){
+        Square[] s= board.getPieceArray(this);
+        for(Square t: s){
+            if(!board.getValidMoves(t,this).isEmpty()){
+                return t;
+            }
+        }
         return null;
     }
 
     public Square getTurn(Square[] squares){
-        return null;
+
+        return squares[0];
     }
 
 }
