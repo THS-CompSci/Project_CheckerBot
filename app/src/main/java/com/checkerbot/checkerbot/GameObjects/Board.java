@@ -5,6 +5,7 @@ import android.graphics.Point;
 
 import com.checkerbot.checkerbot.Exceptions.InvalidMoveException;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Board {
@@ -163,13 +164,13 @@ public class Board {
 
     private ArrayList<Square> kingJumpLogic(Square play, Player p) {
         ArrayList<Square> valid = new ArrayList<Square>();
-        System.out.println("here");
+
         try {
             if (board[play.getY() - (2 * forward)][play.getX() + 2].getPiece() == null) {
                 if (board[play.getY() - forward][play.getX() + 1].getPiece() != null) {
                     if (board[play.getY() - forward][play.getX() + 1].getPiece().getColor() == p.getOtherPlayer().getColor()) {
                         valid.add(board[play.getY() - (2 * forward)][play.getX() + 2]);
-                        System.out.println("valid");
+
 //                        p.setLastJump(true);
                     }
                 }
@@ -214,29 +215,18 @@ public class Board {
     }
 
     public Square[] getPieceArray(Player p) {
-        Square[] squares;
-        int count = 0;
+        ArrayList<Square> squares = new ArrayList<Square>();
         for (int r = 0; r <= 7; r++) {
             for (int c = 0; c <= 7; c++) {
                 if (this.getSquare(new Point(r, c)).getPiece() != null) {
                     if (this.getSquare(new Point(r, c)).getPiece().getColor() == p.getColor())
-                        count++;
+                        squares.add(this.getSquare(new Point(r,c)));
                 }
             }
         }
-        squares = new Square[count];
-        int count2 = 0;
-        for (int r = 0; r <= 7; r++) {
-            for (int c = 0; c <= 7; c++) {
-                if (this.getSquare(new Point(r, c)).getPiece() != null) {
-                    if (this.getSquare(new Point(r, c)).getPiece().getColor() == p.getColor()) ;
-                    squares[count2] = this.getSquare(new Point(r, c));
-                    count2++;
-                }
-            }
-        }
-        squares = new Square[count];
-        return squares;
+
+
+        return squares.toArray(new Square[]{});
     }
 
     public Square getBetween(Square s, Square f) {

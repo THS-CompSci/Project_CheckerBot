@@ -88,9 +88,10 @@ public class Game extends AppCompatActivity {
     private void referee() {
         Square[] s = board.getPieceArray(p1);
         System.out.println(s.length);
-        for(Square r : s){
-            System.out.println(s.toString());
+        while(true){
+
         }
+
     }
 
     public void update() {
