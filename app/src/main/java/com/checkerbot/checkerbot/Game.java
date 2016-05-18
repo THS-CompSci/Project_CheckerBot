@@ -86,12 +86,7 @@ public class Game extends AppCompatActivity {
     }
 
     private void referee() {
-        Square[] s = board.getPieceArray(p1);
-        System.out.println(s.length);
-        while(true){
-
-        }
-
+        p1.getTurn(board).setColor(Color.GREEN);
     }
 
     public void update() {

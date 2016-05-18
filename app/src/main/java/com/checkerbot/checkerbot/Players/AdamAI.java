@@ -12,8 +12,14 @@ public class AdamAI extends Player {
 
     public Square getTurn(Board board){
         Square[] squares= board.getPieceArray(this);
-        Square s = squares[(int)(Math.random()*squares.length)];
-        return s;
+        while(true) {
+            Square s = squares[(int) (Math.random() * squares.length)];
+            if(!board.getValidMoves(s,this).isEmpty()){
+                return s;
+            }
+
+        }
+
     }
 
     public Square getTurn(Square[] squares){
