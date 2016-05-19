@@ -214,6 +214,13 @@ public class Board {
         return false;
     }
 
+    public boolean isMoveJump(Square s1, Square s2){
+        if(Math.abs(s1.getY()-s2.getY())==2){
+            return true;
+        }
+        return false;
+    }
+
     public Square[] getPieceArray(Player p) {
         ArrayList<Square> squares = new ArrayList<Square>();
         for (int r = 0; r <= 7; r++) {
