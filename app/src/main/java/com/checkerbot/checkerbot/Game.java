@@ -19,6 +19,8 @@ import com.checkerbot.checkerbot.Players.WilliamAI;
 import com.checkerbot.checkerbot.Players.YasserAI;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.RunnableFuture;
 
 public class Game extends AppCompatActivity {
@@ -88,17 +90,34 @@ public class Game extends AppCompatActivity {
         p2.setOtherPlayer(p1);
         p1.setTurn(true);
 
+        Timer timer = new Timer();
+
+        int interval = 1000; // One second
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    referee();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }).start();
 
 
     }
 
 
-    private void referee(){
+    private void referee() throws InterruptedException {
+        while(true) {
             //Have p1 choose which piece to play
             ArrayList<Square> p1Changed = new ArrayList<Square>();
             Square p1Play = p1.getTurn(board);
             p1Play.setColor(Color.GREEN);
             p1Changed.add(p1Play);
+            Thread.sleep(1000);
 
             //Have the board display the valid moves
             ArrayList<Square> p1ValidMoves = board.getValidMoves(p1Play, p1);
@@ -106,13 +125,13 @@ public class Game extends AppCompatActivity {
                 s.setColor(Color.RED);
                 p1Changed.add(s);
             }
-
+            Thread.sleep(1000);
 
             //Have p1 select from valid moves, and change selected square's color
             Square p1selected = p1.getTurn(board.getValidMoves(p1Play, p1).toArray(new Square[]{}));
             p1selected.setColor(Color.RED);
             p1Changed.add(p1selected);
-
+            Thread.sleep(1000);
 
             //Move the piece to the selected square, and change the squares back to original color
             Piece p1Piece = p1Play.getPiece();
@@ -125,13 +144,14 @@ public class Game extends AppCompatActivity {
             for (Square s : p1Changed) {
                 s.setColor(Color.rgb(127, 174, 255));
             }
-
+            Thread.sleep(1000);
 
             //Have p2 choose which piece to play
             ArrayList<Square> p2Changed = new ArrayList<Square>();
             Square p2Play = p2.getTurn(board);
             p2Play.setColor(Color.GREEN);
             p2Changed.add(p2Play);
+            Thread.sleep(1000);
 
             //Have the board display the valid moves
             ArrayList<Square> p2ValidMoves = board.getValidMoves(p2Play, p2);
@@ -139,12 +159,13 @@ public class Game extends AppCompatActivity {
                 s.setColor(Color.RED);
                 p2Changed.add(s);
             }
+            Thread.sleep(1000);
 
             //Have p2 select from valid moves, and change selected square's color
             Square p2selected = p2.getTurn(board.getValidMoves(p2Play, p2).toArray(new Square[]{}));
             p2selected.setColor(Color.RED);
             p2Changed.add(p2selected);
-
+            Thread.sleep(1000);
 
             //Move the piece to the selected square, and change the squares back to original color
             Piece p2Piece = p2Play.getPiece();
@@ -157,7 +178,8 @@ public class Game extends AppCompatActivity {
             for (Square s : p2Changed) {
                 s.setColor(Color.rgb(127, 174, 255));
             }
-
+            Thread.sleep(1000);
+        }
     }
 
 

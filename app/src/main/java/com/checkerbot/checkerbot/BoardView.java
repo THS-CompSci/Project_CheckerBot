@@ -55,6 +55,7 @@ public class BoardView extends View {
                 s.draw(canvas, windowWidth / 8);
             }
         }
+        this.invalidate();
     }
 
     public void update() {
