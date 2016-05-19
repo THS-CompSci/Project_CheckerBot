@@ -12,11 +12,19 @@ public class WilliamAI extends Player {
 
 
     public Square getTurn(Board board){
-        return null;
+        Square[] squares= board.getPieceArray(this);
+        while(true) {
+            Square s = squares[(int) (Math.random() * squares.length)];
+            if(!board.getValidMoves(s,this).isEmpty()){
+                return s;
+            }
+
+        }
+
     }
 
     public Square getTurn(Square[] squares){
-        return null;
+        Square s = squares[(int)(Math.random()*squares.length)];
+        return s;
     }
-
 }
