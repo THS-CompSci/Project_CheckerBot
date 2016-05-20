@@ -52,6 +52,20 @@ public class Board {
         }catch(InvalidMoveException e){
 
         }
+        for(Square s: valid){
+            if(this.isJump(s,p)){
+                return onlyJumps(valid,p);
+            }
+        }
+        return valid;
+    }
+
+    private ArrayList<Square> onlyJumps(ArrayList<Square> valid, Player p) {
+        for(int i = 0; i < valid.size(); i++){
+            if(!this.isJump(valid.get(i),p)){
+                valid.remove(i);
+            }
+        }
         return valid;
     }
 
@@ -206,9 +220,11 @@ public class Board {
         if (this.jumpLogic(s, p).size() > 0) {
             return true;
         }
-        if (s.getPiece().getState() == 1) {
-            if (this.kingJumpLogic(s, p).size() > 0) {
-                return true;
+        if(s.getPiece()!=null) {
+            if (s.getPiece().getState() == 1) {
+                if (this.kingJumpLogic(s, p).size() > 0) {
+                    return true;
+                }
             }
         }
         return false;

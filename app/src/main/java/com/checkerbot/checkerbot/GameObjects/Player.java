@@ -7,6 +7,16 @@ import java.util.ArrayList;
 
 public abstract class Player {
 
+    private int king;
+
+    public void setKing(int king){
+        this.king = king;
+    }
+
+    public int getKing(){
+        return king;
+    }
+
     public abstract Square getTurn(Board board);
 
     public abstract Square getTurn(Square[] squares);
