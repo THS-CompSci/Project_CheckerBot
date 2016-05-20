@@ -1,13 +1,11 @@
-package com.checkerbot.checkerbot.Players;
+package com.checkerbot.checkerbot.Players.Yasser;
 
 import com.checkerbot.checkerbot.GameObjects.Board;
 import com.checkerbot.checkerbot.GameObjects.Player;
 import com.checkerbot.checkerbot.GameObjects.Square;
 
-/**
- * Created by kyokyo on 5/12/2016.
- */
-public class AdamAI extends Player {
+
+public class YasserAI extends Player {
 
     public Square getTurn(Board board){
         Square[] squares= board.getPieceArray(this);
