@@ -2,26 +2,21 @@ package com.checkerbot.checkerbot;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 
 import com.checkerbot.checkerbot.GameObjects.Board;
 import com.checkerbot.checkerbot.GameObjects.Piece;
 import com.checkerbot.checkerbot.GameObjects.Player;
-import com.checkerbot.checkerbot.GameObjects.Referee;
 import com.checkerbot.checkerbot.GameObjects.Square;
 import com.checkerbot.checkerbot.Players.AdamAI;
 import com.checkerbot.checkerbot.Players.BrianAI;
 import com.checkerbot.checkerbot.Players.DamenAI;
 import com.checkerbot.checkerbot.Players.DennisAI;
 import com.checkerbot.checkerbot.Players.WilliamAI;
-import com.checkerbot.checkerbot.Players.YasserAI;
+import com.checkerbot.checkerbot.Players.Yasser.YasserAI;
 
 import java.util.ArrayList;
 import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.RunnableFuture;
 
 public class Game extends AppCompatActivity {
 
