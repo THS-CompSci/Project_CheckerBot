@@ -10,7 +10,7 @@ import com.checkerbot.checkerbot.GameObjects.Square;
 public class AdamAI extends Player {
 
     public Square getTurn(Board board){
-        Square[] squares= board.getPieceArray(this);
+        Square[] squares= board.getValidPieceArray(this);
         while(true) {
             Square s = squares[(int) (Math.random() * squares.length)];
             if(!board.getValidMoves(s,this).isEmpty()){

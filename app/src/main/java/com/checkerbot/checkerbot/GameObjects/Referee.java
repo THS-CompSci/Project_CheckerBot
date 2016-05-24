@@ -33,6 +33,7 @@ public class Referee implements Runnable {
         play.setColor(Color.GREEN);
         changed.add(play);
 
+
         ArrayList<Square> p1ValidMoves = board.getValidMoves(play, p);
         for (Square s : p1ValidMoves) {
             s.setColor(Color.RED);
@@ -40,10 +41,15 @@ public class Referee implements Runnable {
         }
     }
 
-    private void getMove(Player p){
-        selected = p.getTurn(board.getValidMoves(play, p).toArray(new Square[]{}));
-        selected.setColor(Color.RED);
-        changed.add(selected);
+    private void getMove(Player p, boolean jump){
+        if(jump){
+
+        }else{
+            selected = p.getTurn(board.getValidMoves(play, p).toArray(new Square[]{}));
+            selected.setColor(Color.RED);
+            changed.add(selected);
+        }
+
     }
 
     private void move(Player p){
@@ -66,18 +72,18 @@ public class Referee implements Runnable {
     public void referee() throws InterruptedException {
         while(true) {
             this.getPlay(p1);
-            Thread.sleep(10);
-            this.getMove(p1);
-            Thread.sleep(10);
+            Thread.sleep(1000);
+            this.getMove(p1, false);
+            Thread.sleep(1000);
             this.move(p1);
-            Thread.sleep(10);
+            Thread.sleep(1000);
 
             this.getPlay(p2);
-            Thread.sleep(10);
-            this.getMove(p2);
-            Thread.sleep(10);
+            Thread.sleep(1000);
+            this.getMove(p2, false);
+            Thread.sleep(1000);
             this.move(p2);
-            Thread.sleep(10);
+            Thread.sleep(1000);
 
         }
     }

@@ -49,20 +49,20 @@ public class Board {
         ArrayList<Square> valid = new ArrayList<Square>();
         try {
             valid.addAll(this.mainLogic(play, p));
-        }catch(InvalidMoveException e){
+        } catch (InvalidMoveException e) {
 
         }
-        for(Square s: valid){
-            if(this.isJump(s,p)){
-                return onlyJumps(valid,p);
+        for (Square s : valid) {
+            if (this.isJump(s, p)) {
+                return onlyJumps(valid, p);
             }
         }
         return valid;
     }
 
     private ArrayList<Square> onlyJumps(ArrayList<Square> valid, Player p) {
-        for(int i = 0; i < valid.size(); i++){
-            if(!this.isJump(valid.get(i),p)){
+        for (int i = 0; i < valid.size(); i++) {
+            if (!this.isJump(valid.get(i), p)) {
                 valid.remove(i);
             }
         }
@@ -217,21 +217,58 @@ public class Board {
     }
 
     public boolean isJump(Square s, Player p) {
-        if (this.jumpLogic(s, p).size() > 0) {
-            return true;
+        int direction;
+        if (p.getColor() == Color.BLACK) {
+            direction = 1;
+        } else {
+            direction = -1;
         }
-        if(s.getPiece()!=null) {
-            if (s.getPiece().getState() == 1) {
-                if (this.kingJumpLogic(s, p).size() > 0) {
+        try{
+            if (this.getSquare(new Point(s.getX() + 1, s.getY() + direction)).getPiece().getColor() != p.getColor()) {
+                if (this.getSquare(new Point(s.getX() + 2, s.getY() + (direction * 2))).getPiece() == null) {
                     return true;
                 }
             }
+        }catch (NullPointerException e){
+
+        }
+        try{
+            if (this.getSquare(new Point(s.getX() - 1, s.getY() + direction)).getPiece().getColor() != p.getColor()) {
+                if (this.getSquare(new Point(s.getX() - 2, s.getY() + (direction * 2))).getPiece() == null) {
+                    return true;
+                }
+            }
+        }catch (NullPointerException e){
+
+        }
+
+
+        if (s.isKing()) {
+            try{
+                if(this.getSquare(new Point(s.getX() + 1, s.getY() + direction)).getPiece().getColor() != p.getColor()) {
+                    if (this.getSquare(new Point(s.getX() + 2, s.getY() + (direction * -2))).getPiece() == null) {
+                        return true;
+                    }
+                }
+            }catch (NullPointerException e){
+
+            }
+            try{
+                if(!(this.getSquare(new Point(s.getX() - 1, s.getY() + direction)).getPiece().getColor() != p.getColor())) {
+                    if (this.getSquare(new Point(s.getX() - 2, s.getY() + (direction * -2))).getPiece() == null) {
+                        return true;
+                    }
+                }
+            }catch (NullPointerException e){
+
+            }
+
         }
         return false;
     }
 
-    public boolean isMoveJump(Square s1, Square s2){
-        if(Math.abs(s1.getY()-s2.getY())==2){
+    public boolean isMoveJump(Square s1, Square s2) {
+        if (Math.abs(s1.getY() - s2.getY()) == 2) {
             return true;
         }
         return false;
@@ -243,8 +280,36 @@ public class Board {
             for (int c = 0; c <= 7; c++) {
                 if (this.getSquare(new Point(r, c)).getPiece() != null) {
                     if (this.getSquare(new Point(r, c)).getPiece().getColor() == p.getColor())
-                        squares.add(this.getSquare(new Point(r,c)));
+                        squares.add(this.getSquare(new Point(r, c)));
                 }
+            }
+        }
+
+
+        return squares.toArray(new Square[]{});
+    }
+
+    public Square[] getValidPieceArray(Player p) {
+        ArrayList<Square> squares = new ArrayList<Square>();
+        for (int r = 0; r <= 7; r++) {
+            for (int c = 0; c <= 7; c++) {
+                if (this.getSquare(new Point(r, c)).getPiece() != null) {
+                    if (this.getSquare(new Point(r, c)).getPiece().getColor() == p.getColor())
+                        squares.add(this.getSquare(new Point(r, c)));
+                }
+            }
+        }
+
+        for (Square s : squares) {
+            if (this.isJump(s, p)) {
+
+                ArrayList<Square> sq = new ArrayList<Square>();
+                for (Square r : squares) {
+                    if (this.isJump(r, p)) {
+                        sq.add(r);
+                    }
+                }
+                return sq.toArray(new Square[]{});
             }
         }
 
