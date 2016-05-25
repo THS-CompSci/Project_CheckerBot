@@ -28,6 +28,7 @@ public class WilliamAI extends Player {
         return s;
     }
 }
+
 //find jumps
 if(board.getValidPieceArray==null){
         fillMatrix();
