@@ -1,6 +1,7 @@
 package com.checkerbot.checkerbot.GameObjects;
 
 import android.graphics.Color;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,10 +28,12 @@ public class Referee implements Runnable {
 
     }
 
-    private void getPlay(Player p){
+    private void getPlay(Player p) {
         changed = new ArrayList<Square>();
         play = p.getTurn(board);
-        play.setColor(Color.GREEN);
+        if (play != null) {
+            play.setColor(Color.GREEN);
+        }
         changed.add(play);
 
 
@@ -41,18 +44,16 @@ public class Referee implements Runnable {
         }
     }
 
-    private void getMove(Player p, boolean jump){
-        if(jump){
+    private void getMove(Player p) {
 
-        }else{
-            selected = p.getTurn(board.getValidMoves(play, p).toArray(new Square[]{}));
-            selected.setColor(Color.RED);
-            changed.add(selected);
-        }
+        selected = p.getTurn(board.getValidMoves(play, p).toArray(new Square[]{}));
+        selected.setColor(Color.RED);
+        changed.add(selected);
+
 
     }
 
-    private void move(Player p){
+    private void move(Player p) {
         piece = play.getPiece();
         if (selected.getY() == p.getKing()) {
             selected.setPiece(new Piece(p.getColor(), 1));
@@ -63,28 +64,33 @@ public class Referee implements Runnable {
         for (Square s : changed) {
             s.setColor(Color.rgb(127, 174, 255));
         }
-        if(board.isMoveJump(play, selected)){
+        if (board.isMoveJump(play, selected)) {
             board.getBetween(play, selected).setPiece(null);
         }
     }
 
 
+
     public void referee() throws InterruptedException {
-        while(true) {
+        while (true) {
             this.getPlay(p1);
-            Thread.sleep(1000);
-            this.getMove(p1, false);
-            Thread.sleep(1000);
+            Thread.sleep(100);
+            this.getMove(p1);
+            Thread.sleep(100);
             this.move(p1);
-            Thread.sleep(1000);
-
+            Thread.sleep(100);
+            if (board.getPieceArray(p2).length == 0) {
+                break;
+            }
             this.getPlay(p2);
-            Thread.sleep(1000);
-            this.getMove(p2, false);
-            Thread.sleep(1000);
+            Thread.sleep(100);
+            this.getMove(p2);
+            Thread.sleep(100);
             this.move(p2);
-            Thread.sleep(1000);
-
+            Thread.sleep(100);
+            if (board.getPieceArray(p1).length == 0) {
+                break;
+            }
         }
     }
 

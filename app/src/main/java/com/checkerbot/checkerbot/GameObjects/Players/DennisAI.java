@@ -1,10 +1,8 @@
-package com.checkerbot.checkerbot.Players;
+package com.checkerbot.checkerbot.GameObjects.Players;
 
 import com.checkerbot.checkerbot.GameObjects.Board;
 import com.checkerbot.checkerbot.GameObjects.Player;
 import com.checkerbot.checkerbot.GameObjects.Square;
-
-import java.util.Random;
 
 /**
  * Created by Damen on 5/11/2016.

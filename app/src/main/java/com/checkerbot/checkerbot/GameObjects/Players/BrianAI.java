@@ -1,4 +1,4 @@
-package com.checkerbot.checkerbot.Players;
+package com.checkerbot.checkerbot.GameObjects.Players;
 
 import android.graphics.Point;
 

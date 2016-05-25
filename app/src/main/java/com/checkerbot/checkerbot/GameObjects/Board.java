@@ -52,9 +52,18 @@ public class Board {
         } catch (InvalidMoveException e) {
 
         }
+
+
         for (Square s : valid) {
-            if (this.isJump(s, p)) {
-                return onlyJumps(valid, p);
+            if (this.isMoveJump(s, play)) {
+                return this.jumpLogic(play, p);
+//                ArrayList<Square> sq = new ArrayList<Square>();
+//                for (Square r : valid) {
+//                    if (this.isJump(r, p)) {
+//                        sq.add(r);
+//                    }
+//                }
+//                return sq;
             }
         }
         return valid;
@@ -72,8 +81,16 @@ public class Board {
     private ArrayList<Square> mainLogic(Square play, Player p) throws InvalidMoveException {
         ArrayList<Square> valid = new ArrayList<Square>();
         //Main Logic
-        if ((play.getX() + play.getY()) % 2 == 0) {
-            throw new InvalidMoveException();
+        try {
+            if ((play.getX() + play.getY()) % 2 == 0) {
+                throw new InvalidMoveException();
+            }
+        }catch(NullPointerException e){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
         }
         //test to see if player's piece
         if (play.getPiece() != null) {

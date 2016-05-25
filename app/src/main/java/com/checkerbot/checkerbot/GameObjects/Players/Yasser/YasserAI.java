@@ -1,4 +1,4 @@
-package com.checkerbot.checkerbot.Players.Yasser;
+package com.checkerbot.checkerbot.GameObjects.Players.Yasser;
 
 import com.checkerbot.checkerbot.GameObjects.Board;
 import com.checkerbot.checkerbot.GameObjects.Player;

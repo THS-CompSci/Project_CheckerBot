@@ -1,4 +1,4 @@
-package com.checkerbot.checkerbot.Players;
+package com.checkerbot.checkerbot.GameObjects.Players;
 
 import com.checkerbot.checkerbot.GameObjects.Board;
 import com.checkerbot.checkerbot.GameObjects.Player;

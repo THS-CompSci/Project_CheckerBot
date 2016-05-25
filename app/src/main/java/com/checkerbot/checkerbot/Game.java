@@ -5,19 +5,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.checkerbot.checkerbot.GameObjects.Board;
-import com.checkerbot.checkerbot.GameObjects.Piece;
 import com.checkerbot.checkerbot.GameObjects.Player;
 import com.checkerbot.checkerbot.GameObjects.Referee;
 import com.checkerbot.checkerbot.GameObjects.Square;
-import com.checkerbot.checkerbot.Players.AdamAI;
-import com.checkerbot.checkerbot.Players.BrianAI;
-import com.checkerbot.checkerbot.Players.DamenAI;
-import com.checkerbot.checkerbot.Players.DennisAI;
-import com.checkerbot.checkerbot.Players.WilliamAI;
-import com.checkerbot.checkerbot.Players.Yasser.YasserAI;
-
-import java.util.ArrayList;
-import java.util.Timer;
+import com.checkerbot.checkerbot.GameObjects.Players.AdamAI;
+import com.checkerbot.checkerbot.GameObjects.Players.BrianAI;
+import com.checkerbot.checkerbot.GameObjects.Players.DamenAI;
+import com.checkerbot.checkerbot.GameObjects.Players.DennisAI;
+import com.checkerbot.checkerbot.GameObjects.Players.WilliamAI;
+import com.checkerbot.checkerbot.GameObjects.Players.Yasser.YasserAI;
 
 public class Game extends AppCompatActivity {
 
