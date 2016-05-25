@@ -28,3 +28,21 @@ public class WilliamAI extends Player {
         return s;
     }
 }
+
+//find jumps
+if(board.getValidPieceArray==null){
+        fillMatrix();
+        }
+        else{
+            Square s = bestJump();
+        }
+//best jump
+
+//potentials
+boardMat[r][c] = c+r
+if(c>3){
+        boardMat[r][c] = 7-c+r
+        }
+
+//best move
+//loop through for highest number, determine which piece can move there
