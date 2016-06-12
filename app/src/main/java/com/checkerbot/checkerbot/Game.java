@@ -6,14 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.checkerbot.checkerbot.GameObjects.Board;
 import com.checkerbot.checkerbot.GameObjects.Player;
-import com.checkerbot.checkerbot.GameObjects.Referee;
-import com.checkerbot.checkerbot.GameObjects.Square;
+import com.checkerbot.checkerbot.GameObjects.Players.Human;
+import com.checkerbot.checkerbot.GameObjects.Players.Referee;
 import com.checkerbot.checkerbot.GameObjects.Players.AdamAI;
-import com.checkerbot.checkerbot.GameObjects.Players.BrianAI;
 import com.checkerbot.checkerbot.GameObjects.Players.DamenAI;
-import com.checkerbot.checkerbot.GameObjects.Players.DennisAI;
-import com.checkerbot.checkerbot.GameObjects.Players.WilliamAI;
-import com.checkerbot.checkerbot.GameObjects.Players.Yasser.YasserAI;
 
 public class Game extends AppCompatActivity {
 
@@ -36,57 +32,29 @@ public class Game extends AppCompatActivity {
 
         switch (player1) {
             case "Adam AI":
-                p1 = new AdamAI();
+                p1 = new AdamAI(p2, Color.WHITE, board);
                 break;
             case "Damen AI":
-                p1 = new DamenAI();
+                p1 = new DamenAI(p2, Color.WHITE, board);
                 break;
-            case "Yasser AI":
-                p1 = new YasserAI();
-                break;
-            case "Dennis AI":
-                p1 = new DennisAI();
-                break;
-            case "Brian AI":
-                p1 = new BrianAI();
-                break;
-            case "William AI":
-                p1 = new WilliamAI();
+            case "Human":
+                p1 = new Human(p2, Color.WHITE, board);
                 break;
         }
 
         switch (player2) {
             case "Adam AI":
-                p2 = new AdamAI();
+                p2 = new AdamAI(p1, Color.BLACK, board);
                 break;
             case "Damen AI":
-                p2 = new DamenAI();
+                p2 = new DamenAI(p1, Color.BLACK, board);
                 break;
-            case "Yasser AI":
-                p2 = new YasserAI();
-                break;
-            case "Dennis AI":
-                p2 = new DennisAI();
-                break;
-            case "Brian AI":
-                p2 = new BrianAI();
-                break;
-            case "William AI":
-                p2 = new WilliamAI();
+            case "Human":
+                p1 = new Human(p1, Color.BLACK, board);
                 break;
         }
 
-        p1.setColor(Color.WHITE);
-        p2.setColor(Color.BLACK);
-        p1.setOtherPlayer(p2);
-        p2.setOtherPlayer(p1);
-        p1.setTurn(true);
-        p1.setKing(0);
-        p2.setKing(7);
-
-        int interval = 1000; // One second
-
-        new Thread(new Referee(board, p1, p2) {
+        new Thread(new Referee(p1, p2, board) {
             @Override
             public void run() {
 
@@ -102,12 +70,5 @@ public class Game extends AppCompatActivity {
 
     }
 
-    public void update() {
-        boardView.update();
-    }
-
-    public boolean validMove(Player p, Square s) {
-        return true;
-    }
 
 }

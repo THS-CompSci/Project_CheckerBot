@@ -3,12 +3,9 @@
     <string name="action_settings">Choose A Player</string>
 
     <string-array name="Player_name">
+        <item>Human</item>
         <item>Adam AI</item>
         <item>Damen AI</item>
-        <item>Yasser AI</item>
-        <item>Dennis AI</item>
-        <item>Brian AI</item>
-        <item>William AI</item>
     </string-array>
     <string name="title_activity_main_menu">Main Menu</string>
 </resources>

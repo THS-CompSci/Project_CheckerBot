@@ -1,7 +1,6 @@
 package com.checkerbot.checkerbot.GameObjects.Players;
 
-import android.graphics.Color;
-
+import com.checkerbot.checkerbot.BoardView;
 import com.checkerbot.checkerbot.GameObjects.Board;
 import com.checkerbot.checkerbot.GameObjects.Player;
 import com.checkerbot.checkerbot.GameObjects.Square;
@@ -9,12 +8,13 @@ import com.checkerbot.checkerbot.GameObjects.Square;
 import java.util.ArrayList;
 
 /**
- * Created by kyokyo on 5/12/2016.
+ * Created by Damen on 5/28/2016.
  */
-public class AdamAI extends Player {
+public class Human extends Player {
 
 
-    public AdamAI(Player otherPlayer, int color, Board board) {
+
+    public Human(Player otherPlayer, int color, Board board) {
         super(otherPlayer, color, board);
     }
 
@@ -27,4 +27,9 @@ public class AdamAI extends Player {
     public Square getMove() {
         return null;
     }
+
+    public Square getSquareAtCoordinates(int x, int y){
+        return null;
+    }
+
 }
